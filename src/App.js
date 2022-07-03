@@ -30,10 +30,7 @@ function App() {
   const changeSubmit = (event) => {
     event.preventDefault()
     if ((formData.email && formData.password) === ""){
-      console.log("YEs");
-      return`
-          ${errors.uemail}
-      `
+      console.log("Email and Password required*");
     }
     else{
       setIsSubmitted(!isSubmitted)
