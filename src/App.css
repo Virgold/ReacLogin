@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+/* body { 
+  width: 100%;
+  height:100%;
+  font-family: 'Open Sans', sans-serif;
+  background: #092756;
+  background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(191, 201, 206, 0.193) 10%,rgba(136, 91, 18, 0.957) 40%),-moz-linear-gradient(top,  rgba(12, 28, 34, 0.957) 0%, rgba(192, 199, 210, 0.587) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
+  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+  background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+  background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(213, 183, 183, 0.6) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(252, 255, 252, 0.681) 0%,#d89f9f 100%), linear-gradient(135deg,  #d8c3c7f3 0%,#1b3764ea 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+} */
+
+
+
+h4 {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+form{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.container{
+  box-shadow: 1px 2px 5px #9FC131;
+  width: 450px;
+}
+
+
+.form-control{
+  background-color: white!important;
+  border: 1px solid #2102038d!important;
+  outline: none!important;
+  
+}
+.form-control:focus{
+  box-shadow: none!important;
+}
+button.form-control{
+  background-color: #210203!important;
+  border: none!important;
+}
+.loginbtn{
+  background-color: #210203!important;
+  border: none!important;
+}
+
+@media (max-width: 991px) {
+  .container{
+    width: 100% !important;
   }
+  /* .container-fluid{
+      margin-top: 2rem!important;
+  } */
+}
+.lock{
+  position:absolute;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:radial-gradient(at 30% 30%,#0000,#000a) #f1ebebfb;
+  left:80px;
+  top:40px;
+  animation: x 0.3s cubic-bezier(0,0,1,0) infinite;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.error {
+  color: red;
+  font-size: 12px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes x {
+   to {
+     top:20.1px;
+   }
 }

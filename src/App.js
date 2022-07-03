@@ -1,25 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from './components/Form';
+import Validator from './components/validator'
+import { useState } from "react";
 
-function App() {
+function App() {  
+  
+
+    const [errors, setErrors]=useState({
+        uemail:"Email Required",
+        upassword:"Password Required"
+    })
+  
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+      email: "",
+      password: ""
+  })
+  
+  console.log(formData);
+  function inputChange(event){
+      setFormData(prevState => {
+          return{
+              ...prevState,
+              [event.target.name]: event.target.value
+          }
+      })
+  }
+
+  const changeSubmit = (event) => {
+    event.preventDefault()
+    if ((formData.email && formData.password) === ""){
+      console.log("YEs");
+      return`
+          ${errors.uemail}
+      `
+    }
+    else{
+      setIsSubmitted(!isSubmitted)
+    }
+}
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    {isSubmitted? <Validator handleSubmit={changeSubmit}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} errorHandler={changeSubmit}/>}
+    </>
+  )
 }
 
 export default App;
