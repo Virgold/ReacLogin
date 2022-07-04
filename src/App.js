@@ -4,6 +4,13 @@ import Validator from './components/validator'
 import { useState } from "react";
 
 function App() {  
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true)
+  };
+  const handleClose = () => setOpen(false);
+
   
 
     const [errors, setErrors]=useState({
@@ -20,12 +27,14 @@ function App() {
   console.log(formData);
   function inputChange(event){
       setFormData(prevState => {
+        console.log(event.target.name)
           return{
               ...prevState,
               [event.target.name]: event.target.value
           }
       })
   }
+
 
   const changeSubmit = (event) => {
     event.preventDefault()
@@ -38,9 +47,10 @@ function App() {
 }
 
 
+
   return (
     <>
-    {isSubmitted? <Validator handleSubmit={changeSubmit}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} errorHandler={changeSubmit}/>}
+    {isSubmitted? <Validator handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen} funcClose={handleClose}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen}/>}
     </>
   )
 }

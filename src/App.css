@@ -57,10 +57,8 @@ button.form-control{
   .container{
     width: 100% !important;
   }
-  /* .container-fluid{
-      margin-top: 2rem!important;
-  } */
 }
+
 .lock{
   position:absolute;
   width:50px;
