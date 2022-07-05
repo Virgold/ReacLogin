@@ -13,10 +13,10 @@ function App() {
 
   
 
-    const [errors, setErrors]=useState({
-        uemail:"Email Required",
-        upassword:"Password Required"
-    })
+  const [errors, setErrors]=useState({
+    uemail:"",
+    upassword:""
+})
   
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -36,13 +36,41 @@ function App() {
   }
 
 
-  const changeSubmit = (event) => {
+  function changeSubmit (event){
     event.preventDefault()
-    if ((formData.email && formData.password) === ""){
-      console.log("Email and Password required*");
+    if ((formData.email === "") && (formData.password === "")){
+      console.log(formData);
+      setErrors(
+        {
+          uemail:"Email Required*",
+          upassword:"Password Required*"
+        }
+      )
+    }
+    else if ((formData.email === formData.email) && (formData.password === "")){
+      console.log("EMAIL VALID");
+      setErrors(
+        {
+          uemail:"",
+          upassword:"Password Required*"
+        }
+      )
+    }
+    else if ((formData.email === "") && (formData.password === formData.password)){
+      console.log("PASSWORD VALID");
+      setErrors(
+        {
+          uemail:"Email Required*",
+          upassword:""
+        }
+      )
     }
     else{
       setIsSubmitted(!isSubmitted)
+      setErrors({
+        uemail:"",
+        upassword: ""
+    })
     }
 }
 
@@ -50,7 +78,7 @@ function App() {
 
   return (
     <>
-    {isSubmitted? <Validator handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen} funcClose={handleClose}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen}/>}
+    {isSubmitted? <Validator handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen} funcClose={handleClose}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} errorMessage={errors} oPen={open} funcOpen={handleOpen}/>}
     </>
   )
 }

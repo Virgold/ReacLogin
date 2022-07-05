@@ -19,13 +19,13 @@ export default function Form(props) {
                     <div className="mb-4 mt-5">
                         <label htmlFor="formEmail" className="form-label m-0"> <b>Email:</b> </label>
                         <input type="email" className="form-control py-2" id="formEmail" placeholder="Email" value={props.formInput.email} name="email" onChange={props.handleChange}/>
-                        {/* <span className="error">{props.errorHandler}</span> */}
+                        <span className="error">{props.errorMessage.uemail}</span>
                     </div>
 
                     <div className="mb-4 mt-4">
                         <label htmlFor="formPassword" className="form-label m-0"><b>Password:</b> </label>
                         <input type="password" className="form-control py-2" id="formPassword" placeholder="Password" value={props.formInput.password} name="password" onChange={props.handleChange}/>
-                        {/* <span className="error">{props.errorHandler}</span> */}
+                        <span className="error">{props.errorMessage.upassword}</span>
                     </div>
                     <div className="mt-5">
                         <button className="btn form-control loginbtn text-white py-2 fa-spin" onClick={props.funcOpen}><b>SUBMIT</b><Icon className="fs-3 mt-n5 ms-2" icon="ri:login-circle-line" color="white" /></button>
