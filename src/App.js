@@ -26,11 +26,11 @@ function App() {
   
   console.log(formData);
   function inputChange(event){
+    const {name,value,type} = event.target
       setFormData(prevState => {
-        console.log(event.target.name)
           return{
               ...prevState,
-              [event.target.name]: event.target.value
+              [name]: value
           }
       })
   }
@@ -78,7 +78,7 @@ function App() {
 
   return (
     <>
-    {isSubmitted? <Validator handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen} funcClose={handleClose}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} errorMessage={errors} oPen={open} funcOpen={handleOpen}/>}
+    {isSubmitted? <Validator formInput={formData} handleSubmit={changeSubmit} oPen={open} funcOpen={handleOpen} funcClose={handleClose}/> : <Form formInput={formData} handleChange={inputChange} handleSubmit={changeSubmit} errorMessage={errors} oPen={open} funcOpen={handleOpen}/>}
     </>
   )
 }

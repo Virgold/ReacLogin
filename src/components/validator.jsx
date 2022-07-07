@@ -37,7 +37,7 @@ export default function Validator(props){
         <Fade in={props.oPen}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Welcome
+              Welcome {props.formInput.email}
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Glad to Have you!!!
