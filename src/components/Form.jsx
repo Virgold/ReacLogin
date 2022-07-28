@@ -4,6 +4,8 @@ import { Icon } from '@iconify/react';
 import { FormContext } from "../Context/FormContext";
 import Validator from "./validator";
 import { ModalContext } from "../Context/ModalContext";
+import FormSwitches from "./DarkMode";
+
 
 
 export default function Form(props) {
@@ -16,6 +18,13 @@ export default function Form(props) {
         uemail:"",
         upassword:""
     })
+    
+    const [mode,setMode]=useState(false)
+    
+    const toggleMode = () => {
+      console.log(mode);
+      setMode(prevMode => !prevMode)
+    }
 
     function inputChange(event){
         const {name,value,type} = event.target
@@ -67,13 +76,17 @@ export default function Form(props) {
 
 
     return (
-        <>
+        <section className={mode?"dark":""}>
             <Validator/>
             <div className="container-fluid vh-100 py-5 p-0">
-                <h4 className="text-center py-3 fs-2">myLogin</h4>
-
-                <form className="container shadow py-5 px-4 position-relative" onSubmit={formSubmit} handleSubmit={formSubmit}>
-                    <p> <b>Login <Icon className="fs-5 lock" icon="bi:shield-lock-fill" color="#210203" /> </b></p>
+               <div className ="d-flex align-items-center justify-content-center">
+                    <h4 className="py-3 fs-1 me-2">
+                    myLogin
+                    </h4>
+                    <FormSwitches modeChange={toggleMode}/>
+               </div>
+                <form className={mode?"container py-5 px-4 position-relative":"container shadow py-5 px-4 position-relative"} onSubmit={formSubmit} handleSubmit={formSubmit}>
+                    <p> <b>Login<Icon className="fs-5 lock" icon="bi:shield-lock-fill" color="#210203" /> </b></p>
 
                     <div className="mb-4 mt-5">
                         <label htmlFor="formEmail" className="form-label m-0"> <b>Email:</b> </label>
@@ -91,6 +104,6 @@ export default function Form(props) {
                     </div>
                 </form>
             </div>
-        </>
+        </section>
     )
 }
